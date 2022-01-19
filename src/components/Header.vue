@@ -1,20 +1,13 @@
 <template>
+
 <div class="row">
-    <div class="col-6">
+    <div class="col-4">
         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input v-model="inputText" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+            <button @click="$emit('searchFilm', inputText)" class="btn btn-outline-success" type="button">Search</button>
         </form>
     </div>
 </div>
-
-<!-- Milestone 1:
-Creare un layout base con una searchbar (una input e un button) in cui possiamo scrivere completamente o parzialmente il nome di un film. Possiamo, cliccando il  bottone, cercare sull’API tutti i film che contengono ciò che ha scritto l’utente.
-Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti valori per ogni film trovato: 
-Titolo
-Titolo Originale
-Lingua
-Voto -->
 
 </template>
 
@@ -23,7 +16,7 @@ export default {
     name: 'Header',
     data(){
         return{
-
+            inputText:"",
         }
     }
 }
