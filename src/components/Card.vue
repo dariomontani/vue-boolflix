@@ -1,10 +1,11 @@
 <template>
   <div class="card">
-      {{info.title}}
-      {{info.original_title}}
-      {{info.oroginal_language}}
-      {{info.language}}
-      {{info.vote_average}}
+      <ul>
+          <li>{{info.title}}</li>
+          <li>{{info.original_title}}</li>
+          <li>{{info.original_language}}</li>
+          <li>{{info.vote_average}}</li>
+      </ul>
   </div>
 </template>
 
