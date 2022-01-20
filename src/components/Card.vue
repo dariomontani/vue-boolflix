@@ -11,7 +11,7 @@
         </li>
         <li>
             <h4>LINGUA</h4>
-            <p><i :class="'flag flag-' + (info.original_language)"></i></p>
+            <p><i :class="'flag flag-' + addFlag(info.original_language)"></i></p>
         </li>
         <li>
             <h4>VOTO</h4>
@@ -26,6 +26,14 @@ export default {
     name: 'Card',
     props: {
         info: Object,
+    },
+    methods: {
+        addFlag(language) {
+            if (language == "en") {
+                return "us";
+            }
+            return language;
+        },
     },
 }
 </script>
