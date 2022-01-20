@@ -1,12 +1,7 @@
 <template>
-  <div>
-    <ul>
-      <li>TITOLO</li>
-      <li>TITOLO ORIGINALE</li>
-      <li>LINGUA</li>
-      <li>VOTO</li>
-    </ul>
-  </div>
+  <main>
+    <div class="cards"></div>
+  </main>
 </template>
 
 <script>
