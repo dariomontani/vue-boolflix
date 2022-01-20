@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header @searchFilm="getFilms($event)"/>
-    <Main />
+    <Header @searchFilm="search($event)"/>
+    <Main :cards="cards"/>
     <Footer />
   </div>
 </template>
@@ -28,19 +28,26 @@ export default {
       api_key: "9505cc46166ebdcfaaeb4f17e2cdaa20",
       language: "en-US",
       searchText: "",
+      cards: [],
     }
   },
 
   methods: {
-    getFilms(text){
+    search(text){
       this.searchText = text;
+      this.getFilms();
+    },
+    
+    getFilms(){
       let end = "movie";
       let parameters = {
         api_key: this.api_key,
         language: this.language,
         query: this.searchText,
       };
-      axios.get(`${this.queryApi}${end}`, {params: parameters}).then((result) => console.log(result)).catch((error) => console.log(error));
+      axios.get(`${this.queryApi}${end}`, {params: parameters}).then((result) => {
+        this.cards = result.data.results;
+      }).catch((error) => console.log(error));
     }
   },
 };
