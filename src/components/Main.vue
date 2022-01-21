@@ -1,6 +1,11 @@
 <template>
   <main>
-    <Card v-for="(card, index) in cards" :key="index" :info="card" />
+    <div v-if="cards.length > 0">
+      <Card v-for="(card, index) in cards" :key="index" :info="card" />
+    </div>
+    <div v-else>
+      Nessun Risultato
+    </div>
   </main>
 </template>
 
