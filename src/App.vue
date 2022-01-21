@@ -29,6 +29,8 @@ export default {
       language: "en-US",
       searchText: "",
       cards: [],
+      movies: [],
+      series: [],
     }
   },
 
@@ -36,6 +38,7 @@ export default {
     search(text){
       this.searchText = text;
       this.getFilms();
+      this.getTvSeries();
     },
     
     getFilms(){
@@ -46,7 +49,21 @@ export default {
         query: this.searchText,
       };
       axios.get(`${this.queryApi}${end}`, {params: parameters}).then((result) => {
-        this.cards = result.data.results;
+        this.movies = result.data.results;
+        this.cards = [...this.movies,...this.series];
+      }).catch((error) => console.log(error));
+    },
+
+    getTvSeries(){
+      let end = "tv";
+      let parameters = {
+        api_key: this.api_key,
+        language: this.language,
+        query: this.searchText,
+      };
+      axios.get(`${this.queryApi}${end}`, {params: parameters}).then((result) => {
+        this.series = result.data.results;
+        this.cards = [...this.movies,...this.series];
       }).catch((error) => console.log(error));
     }
   },
