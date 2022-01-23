@@ -1,10 +1,10 @@
 <template>
   <main>
-    <div v-if="cards.length > 0">
+    <div class="containerCards" v-if="cards.length > 0">
       <Card v-for="(card, index) in cards" :key="index" :info="card" />
     </div>
-    <div v-else>
-      Nessun Risultato
+    <div class="noRisultato" v-else>
+      <h2>Nessun Risultato</h2>
     </div>
   </main>
 </template>
@@ -33,6 +33,17 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+  .containerCards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .noRisultato{
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
